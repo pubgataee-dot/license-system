@@ -1,0 +1,58 @@
+{
+  "licenses": {
+    "VIC729A3847H1625T9351": {
+      "customer_name": "شرکت فناوری اطلاعات Vixel",
+      "product": "Vixel Pro Suite",
+      "status": "active",
+      "expiry_date": "۱۴۰۳/۱۲/۲۹",
+      "issue_date": "۱۴۰۲/۱۰/۱۵",
+      "max_activations": 5,
+      "used_activations": 2,
+      "remaining_days": 287,
+      "support_tier": "پلاتینیوم",
+      "features": ["پشتیبانی ۲۴/۷", "بروزرسانی مادام العمر", "پشتیبانی فنی اختصاصی"]
+    },
+    "VIC158A9163H7248T4802": {
+      "customer_name": "آزمایشگاه هوش مصنوعی",
+      "product": "Vixel AI Core",
+      "status": "active",
+      "expiry_date": "۱۴۰۳/۰۹/۳۰",
+      "issue_date": "۱۴۰۲/۰۸/۲۰",
+      "max_activations": 3,
+      "used_activations": 1,
+      "remaining_days": 195,
+      "support_tier": "طلایی",
+      "features": ["پشتیبانی تجاری", "بروزرسانی سالانه", "مستندات پیشرفته"]
+    },
+    "VIC463A2591H8374T5769": {
+      "customer_name": "موسسه آموزشی تهران",
+      "product": "Vixel Edu Pack",
+      "status": "expired",
+      "expiry_date": "۱۴۰۲/۱۱/۱۵",
+      "issue_date": "۱۴۰۲/۰۱/۲۰",
+      "max_activations": 2,
+      "used_activations": 2,
+      "remaining_days": 0,
+      "support_tier": "نقره‌ای",
+      "features": ["پشتیبانی آموزشی", "بروزرسانی ۶ ماهه"]
+    },
+    "VIC894A6725H4903T2187": {
+      "customer_name": "استارت‌آپ نوآوران",
+      "product": "Vixel Startup Edition",
+      "status": "active",
+      "expiry_date": "۱۴۰۴/۰۳/۲۰",
+      "issue_date": "۱۴۰۲/۱۲/۰۱",
+      "max_activations": 10,
+      "used_activations": 4,
+      "remaining_days": 398,
+      "support_tier": "طلایی",
+      "features": ["پشتیبانی استارت‌آپی", "مشاوره رایگان", "بروزرسانی ۲ ساله"]
+    }
+  },
+  "metadata": {
+    "last_updated": "2024-01-15T10:00:00Z",
+    "total_licenses": 4,
+    "active_licenses": 3,
+    "system_version": "2.4.1"
+  }
+}

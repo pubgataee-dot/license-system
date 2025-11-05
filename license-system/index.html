@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vixel - سیستم مدیریت لایسنس</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <style>
+        /* استایل‌ها دقیقاً مانند کد قبلی */
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --success: #10b981;
+            --error: #ef4444;
+            --warning: #f59e0b;
+            --dark: #1f2937;
+            --darker: #111827;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --gray-light: #e5e7eb;
+            --border-radius: 16px;
+            --border-radius-lg: 20px;
+            --box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --box-shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--dark);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* بقیه استایل‌ها مانند کد قبلی کامل کنید */
+        /* ... */
+
+    </style>
+</head>
+<body>
+    <div class="glass-container">
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h1>Vixel License System</h1>
+            </div>
+            <p>سیستم پیشرفته مدیریت و اعتبارسنجی لایسنس‌های نرم‌افزاری</p>
+        </div>
+        
+        <div class="content">
+            <div class="input-group">
+                <label for="licenseKey">
+                    <i class="fas fa-key"></i> کلید لایسنس خود را وارد کنید
+                </label>
+                <input type="text" id="licenseKey" class="input-field" 
+                       placeholder="مثال: VIC729A3847H1625T9351" 
+                       value="VIC729A3847H1625T9351">
+            </div>
+            
+            <button class="btn" onclick="validateLicense()">
+                <i class="fas fa-shield-alt"></i> اعتبارسنجی لایسنس
+            </button>
+            
+            <div id="result" class="result"></div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalLicenses">1,247</div>
+                    <div class="stat-label">لایسنس فعال</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="validatedToday">89</div>
+                    <div class="stat-label">اعتبارسنجی امروز</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="successRate">99.8%</div>
+                    <div class="stat-label">میزان موفقیت</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="activeUsers">3.2K</div>
+                    <div class="stat-label">کاربران فعال</div>
+                </div>
+            </div>
+            
+            <div class="features-section">
+                <h3><i class="fas fa-star"></i> ویژگی‌های پلتفرم Vixel</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>اعتبارسنجی سریع</h4>
+                        <p>اعتبارسنجی لایسنس در کمتر از ۲ ثانیه با تکنولوژی پیشرفته</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h4>امنیت بالا</h4>
+                        <p>رمزنگاری پیشرفته و سیستم امنیتی چندلایه برای محافظت از لایسنس‌ها</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>آنالیز پیشرفته</h4>
+                        <p>گزارش‌های دقیق و آنالیز استفاده از لایسنس‌ها</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sync"></i>
+                        </div>
+                        <h4>بروزرسانی زنده</h4>
+                        <p>بروزرسانی لحظه‌ای وضعیت لایسنس‌ها و سینک خودکار</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="test-licenses">
+                <h3><i class="fas fa-vial"></i> لایسنس‌های تست</h3>
+                <ul class="license-list">
+                    <li onclick="setLicenseKey('VIC729A3847H1625T9351')">
+                        <span>VIC729A3847H1625T9351</span>
+                        <span class="status-badge status-active">فعال</span>
+                    </li>
+                    <li onclick="setLicenseKey('VIC158A9163H7248T4802')">
+                        <span>VIC158A9163H7248T4802</span>
+                        <span class="status-badge status-active">فعال</span>
+                    </li>
+                    <li onclick="setLicenseKey('VIC463A2591H8374T5769')">
+                        <span>VIC463A2591H8374T5769</span>
+                        <span class="status-badge status-expired">منقضی</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 Vixel License Management System - کلیه حقوق محفوظ است</p>
+            <p style="margin-top: 8px; font-size: 12px; opacity: 0.7;">
+                نسخه ۲.۴.۱ | ساخت ۱۴۰۲/۱۰/۲۵
+            </p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
