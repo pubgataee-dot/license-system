@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
     <style>
-        /* استایل‌ها دقیقاً مانند کد قبلی */
         :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
@@ -46,9 +45,401 @@
             align-items: center;
         }
 
-        /* بقیه استایل‌ها مانند کد قبلی کامل کنید */
-        /* ... */
+        .glass-container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow-lg);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
 
+        .glass-container:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-lg), 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .header {
+            background: var(--gradient);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-20px, -20px) rotate(360deg); }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .input-group {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 16px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 18px 20px;
+            border: 2px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-family: 'Vazirmatn';
+            transition: var(--transition);
+            background: var(--light);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1), inset 0 2px 4px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 18px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+            font-family: 'Vazirmatn';
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            display: none;
+            animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid;
+        }
+
+        @keyframes slideIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px) scale(0.95); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        .success {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border-color: var(--success);
+            color: #065f46;
+        }
+
+        .error {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border-color: var(--error);
+            color: #7f1d1d;
+        }
+
+        .loading {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
+            border-color: var(--warning);
+            color: #78350f;
+        }
+
+        .result h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .license-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .info-item strong {
+            display: block;
+            color: var(--gray);
+            font-size: 13px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid var(--gray-light);
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .features-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(79, 70, 229, 0.05) 100%);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .features-section h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-size: 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            border: 1px solid var(--gray-light);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h4 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .test-licenses {
+            margin-top: 40px;
+            padding: 30px;
+            background: var(--light);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--gray-light);
+        }
+
+        .test-licenses h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-size: 20px;
+        }
+
+        .license-list {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+        }
+
+        .license-list li {
+            padding: 16px 20px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: var(--transition);
+            border: 1px solid var(--gray-light);
+            cursor: pointer;
+        }
+
+        .license-list li:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .status-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--success);
+        }
+
+        .status-expired {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--error);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 20px;
+            color: var(--gray);
+            font-size: 14px;
+            border-top: 1px solid var(--gray-light);
+            background: var(--light);
+        }
+
+        @media (max-width: 768px) {
+            .glass-container {
+                margin: 10px;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 26px;
+            }
+            
+            .license-info,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
@@ -159,6 +550,138 @@
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <script>
+        
+        function setLicenseKey(key) {
+            document.getElementById('licenseKey').value = key;
+            document.getElementById('licenseKey').focus();
+        }
+
+        
+        async function validateLicense() {
+            const licenseKey = document.getElementById('licenseKey').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (!licenseKey) {
+                showResult('error', 'لطفاً یک کلید لایسنس وارد کنید');
+                return;
+            }
+            
+            
+            showResult('loading', 'در حال بررسی لایسنس...', 'لطفاً چند لحظه صبر کنید');
+            
+            try {
+                
+                const response = await fetch('data/licenses.json');
+                const data = await response.json();
+                
+                
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                const licenseData = data.licenses[licenseKey];
+                
+                if (licenseData && licenseData.status === 'active') {
+                    showSuccessResult(licenseData);
+                } else {
+                    showResult('error', 
+                        'لایسنس نامعتبر است یا وجود ندارد',
+                        'لطفاً از صحت کلید وارد شده اطمینان حاصل کنید'
+                    );
+                }
+                
+            } catch (error) {
+                showResult('error', 
+                    'خطا در ارتباط با سرور',
+                    `خطای فنی: ${error.message}`
+                );
+            }
+        }
+
+        
+        function showResult(type, title, message = '') {
+            const resultDiv = document.getElementById('result');
+            const icons = {
+                success: 'fas fa-check-circle',
+                error: 'fas fa-exclamation-circle',
+                loading: 'fas fa-spinner fa-spin'
+            };
+            
+            resultDiv.innerHTML = `
+                <h3><i class="${icons[type]}"></i> ${title}</h3>
+                ${message ? `<p>${message}</p>` : ''}
+            `;
+            resultDiv.className = `result ${type}`;
+            resultDiv.style.display = 'block';
+        }
+
+        
+        function showSuccessResult(licenseData) {
+            const resultDiv = document.getElementById('result');
+            
+            resultDiv.innerHTML = `
+                <h3><i class="fas fa-check-circle"></i> لایسنس معتبر است</h3>
+                <p>لایسنس وارد شده با موفقیت تأیید شد و فعال است.</p>
+                
+                <div class="license-info">
+                    <div class="info-item">
+                        <strong>مشتری</strong>
+                        ${licenseData.customer_name}
+                    </div>
+                    <div class="info-item">
+                        <strong>محصول</strong>
+                        ${licenseData.product}
+                    </div>
+                    <div class="info-item">
+                        <strong>تاریخ انقضا</strong>
+                        ${licenseData.expiry_date}
+                    </div>
+                    <div class="info-item">
+                        <strong>فعال‌سازی</strong>
+                        ${licenseData.used_activations} از ${licenseData.max_activations}
+                    </div>
+                    <div class="info-item">
+                        <strong>سطح پشتیبانی</strong>
+                        ${licenseData.support_tier}
+                    </div>
+                    <div class="info-item">
+                        <strong>روزهای باقی‌مانده</strong>
+                        ${licenseData.remaining_days} روز
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-radius: 12px; border-right: 4px solid var(--success);">
+                    <strong>ویژگی‌های فعال:</strong>
+                    <div style="margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap;">
+                        ${licenseData.features.map(feature => 
+                            `<span style="background: white; padding: 6px 12px; border-radius: 20px; font-size: 13px; border: 1px solid var(--success); color: var(--success);">${feature}</span>`
+                        ).join('')}
+                    </div>
+                </div>
+            `;
+            resultDiv.className = 'result success';
+            resultDiv.style.display = 'block';
+        }
+
+        
+        document.getElementById('licenseKey').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                validateLicense();
+            }
+        });
+
+        
+        function updateLiveStats() {
+            setInterval(() => {
+                const validatedToday = document.getElementById('validatedToday');
+                const current = parseInt(validatedToday.textContent);
+                validatedToday.textContent = current + Math.floor(Math.random() * 3);
+            }, 5000);
+        }
+
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLiveStats();
+        });
+    </script>
 </body>
 </html>
